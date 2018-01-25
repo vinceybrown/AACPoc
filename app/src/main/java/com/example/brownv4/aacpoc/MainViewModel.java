@@ -17,9 +17,6 @@ public class MainViewModel extends ViewModel {
     private MutableLiveData<BomModel> liveBomModel;
     private WeatherRepo weatherRepo;
 
-    public MainViewModel() {
-    }
-
     MainViewModel(WeatherRepo weatherRepo) {
         this.weatherRepo = weatherRepo;
     }
@@ -36,7 +33,6 @@ public class MainViewModel extends ViewModel {
         weatherRepo.get(new WeatherRepoCallback() {
             @Override
             public void response(BomServiceResponse data) {
-                System.out.println("Got weather!");
                 liveBomModel.setValue(data.getModel());
             }
         });

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         weatherData = new ArrayList<>();
 
         weatherAdapter = new WeatherAdapter(this, weatherData, new CellColourProvider(this));
-//        setRefreshTime(timeStamp);
+        setRefreshTime(timeStamp);
         weatherInfoList.setAdapter(weatherAdapter);
     }
 
@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         final Observer<BomModel> elapsedTimeObserver = new Observer<BomModel>() {
             @Override
             public void onChanged(@Nullable final BomModel data) {
-                System.out.println("Weather received");
                 update(data);
             }
         };
@@ -70,11 +69,15 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         viewModel.requestWeather();
     }
 
+    public void setRefreshTime(String refreshTime) {
+        refreshTimeStamp.setText(refreshTime);
+    }
+
     public void update(BomModel bomModel) {
         String timeStamp = bomModel.getObservations().getHeader().get(0).getRefreshMessage();
         weatherData = bomModel.getObservations().getData();
         weatherAdapter.updateWeatherData(weatherData);
-//        setRefreshTime(timeStamp);
+        setRefreshTime(timeStamp);
         swipeRefreshLayout.setRefreshing(false);
     }
 }
