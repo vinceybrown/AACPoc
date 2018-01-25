@@ -8,7 +8,6 @@ package com.example.brownv4.aacpoc.repo;
 public interface ServiceResponse <T> {
 
     T getModel();
-
     String getError();
-
+    void setError(String error);
 }

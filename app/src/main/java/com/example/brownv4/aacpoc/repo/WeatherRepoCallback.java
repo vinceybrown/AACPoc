@@ -5,6 +5,5 @@ package com.example.brownv4.aacpoc.repo;
  */
 
 public interface WeatherRepoCallback extends RepoCallback<BomServiceResponse> {
-
     void response(BomServiceResponse data);
 }

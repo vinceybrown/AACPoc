@@ -14,7 +14,7 @@ import com.example.brownv4.aacpoc.repo.WeatherRepoCallback;
 
 public class MainViewModel extends ViewModel {
 
-    private MutableLiveData<BomModel> liveBomModel = new MutableLiveData<>();
+    private MutableLiveData<BomModel> liveBomModel;
     private WeatherRepo weatherRepo;
 
     public MainViewModel() {
@@ -25,16 +25,19 @@ public class MainViewModel extends ViewModel {
     }
 
     MutableLiveData<BomModel> getLiveBomModel() {
+        if (liveBomModel == null) {
+            liveBomModel = new MutableLiveData<>();
+            requestWeather();
+        }
         return liveBomModel;
     }
 
     void requestWeather() {
-        liveBomModel = new MutableLiveData<>();
         weatherRepo.get(new WeatherRepoCallback() {
             @Override
             public void response(BomServiceResponse data) {
                 System.out.println("Got weather!");
-                liveBomModel.postValue(data.getModel());
+                liveBomModel.setValue(data.getModel());
             }
         });
     }

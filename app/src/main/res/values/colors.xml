@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="temperatureTextColour">#212223</color>
+
+    <color name="under_five_colour">#88aacfff</color>
+    <color name="between_six_ten">#88589ffc</color>
+    <color name="between_eleven_fifteen">#88fffb3f</color>
+    <color name="between_sixteen_twenty">#88f27a24</color>
+    <color name="between_twenty_one_twenty_five">#88f14923</color>
+    <color name="over_twenty_six">#88ed0707</color>
 </resources>

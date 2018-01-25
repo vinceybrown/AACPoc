@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">AACPoc</string>
     <string name="bom_url">http://www.bom.gov.au/fwo/IDV60801/IDV60801.94866.json</string>
+    <string name="degrees_c">%1$d°c</string>
+    <string name="kmh">%1$d kmh</string>
+    <string name="detail_kmh">%1$s kmh</string>
+    <string name="api_error">Something went wrong when fetching data</string>
+    <string name="wind_speed_label">Wind </string>
+    <string name="wind_dir_label">Wind Direction </string>
 </resources>

@@ -24,8 +24,11 @@ public class BomServiceResponse implements ServiceResponse<BomModel> {
 
     @Override
     public String getError() {
-
         return error;
     }
 
+    @Override
+    public void setError(String error) {
+        this.error = error;
+    }
 }
