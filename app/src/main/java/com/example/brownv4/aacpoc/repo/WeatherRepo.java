@@ -26,26 +26,22 @@ public class WeatherRepo implements Repo<BomServiceResponse> {
 
     @Override
     public BomServiceResponse get(@NonNull final RepoCallback callback) {
-        if (cacheModel != null) callback.response(cacheModel);
-        else {
-            bomApi.getBomModel(apiUrl).enqueue(new Callback<BomModel>() {
-                final
-                @Override
-                public void onResponse(Call<BomModel> call, Response<BomModel> response) {
-                    if (response.isSuccessful()) {
-                        cacheModel = new BomServiceResponse(response.body(), "");
-                        callback.response(cacheModel);
-                    } else {
-
-                    }
+        bomApi.getBomModel(apiUrl).enqueue(new Callback<BomModel>() {
+            @Override
+            final public void onResponse(Call<BomModel> call, Response<BomModel> response) {
+                if (response.isSuccessful()) {
+                    cacheModel = new BomServiceResponse(response.body(), "");
+                    callback.response(cacheModel);
+                } else {
+                    // Handle error.
                 }
+            }
 
-                @Override
-                public void onFailure(Call<BomModel> call, Throwable t) {
-
-                }
-            });
-        }
+            @Override
+            public void onFailure(Call<BomModel> call, Throwable t) {
+                // Handel failure.
+            }
+        });
         return null;
     }
 
